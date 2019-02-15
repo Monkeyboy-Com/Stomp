@@ -1,6 +1,7 @@
 #include <fstream>
 #include <iostream>
 #include <cstring>
+#include <stdexcept>
 
 /**
  * stomp - Simple utility to truncate file(s)
