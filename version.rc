@@ -1,6 +1,6 @@
 1 VERSIONINFO
- FILEVERSION            1,0,0,27
- PRODUCTVERSION         1,0,0,27
+ FILEVERSION            1,1,0,27
+ PRODUCTVERSION         1,1,0,27
  FILEOS                 0x00000004L
  FILETYPE               0x00000001L
 
@@ -16,11 +16,11 @@ BEGIN
         BLOCK "04090000"
         BEGIN
             VALUE "FileDescription",  "File truncation utility, use -h"
-            VALUE "FileVersion",      "1, 0, 0, 27"
+            VALUE "FileVersion",      "1, 1, 0, 27"
             VALUE "InternalName",     "stomp"
             VALUE "LegalCopyright",   "https://github.com/Corionis/Stomp"
             VALUE "ProductName",      "stomp"
-            VALUE "ProductVersion",   "1.0.0.27"
+            VALUE "ProductVersion",   "1.1.0.27"
             VALUE "CompanyName", "Corionis"
         END
     END

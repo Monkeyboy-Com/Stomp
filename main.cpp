@@ -14,6 +14,7 @@
  */
 
 char *arg;
+bool isDelete = false;
 bool quiet = false;
 bool argIs(const char *cmp);
 void parseOptions(int argc, char **argv);
@@ -46,7 +47,11 @@ void parseOptions(int argc, char **argv)
         arg = argv[i];
         if (arg[0] == '-') // skip non-options
         {
-            if (argIs("-q"))
+            if (argIs("-d"))
+            {
+                isDelete = true;
+            }
+            else if (argIs("-q"))
             {
                 quiet = true;
             }
@@ -69,7 +74,12 @@ void stompArguments(int argc, char **argv)
         {
             try
             {
-                std::fstream fs(arg, std::fstream::out | std::fstream::trunc);
+                if (isDelete) {
+                    unlink(arg);
+                }
+                else {
+                    std::fstream fs(arg, std::fstream::out | std::fstream::trunc);
+                }
                 ++count;
             }
             catch(const std::runtime_error& re)
@@ -82,24 +92,25 @@ void stompArguments(int argc, char **argv)
             }
             if ( ! quiet)
             {
-                std::cout << argv[i] << std::endl;
+                std::cout << (isDelete ? "deleted " : "stomped ") << argv[i] << std::endl;
             }
         }
     }
     if ( ! quiet)
     {
-        std::cout << "stomped " << count << " files" << std::endl;
+        std::cout << (isDelete ? "deleted " : "stomped ") << count << " files" << std::endl;
     }
 }
 
 void usage()
 {
     std::cout << "" << std::endl;
-    std::cout << "stomp v1.0 - Truncate one or more files" << std::endl;
+    std::cout << "stomp v1.1.0 - Truncate one or more files" << std::endl;
     std::cout << "" << std::endl;
     std::cout << "Usage: stomp [-q] file1 file2 ..." << std::endl;
     std::cout << "" << std::endl;
     std::cout << "Options:" << std::endl;
+    std::cout << "  -d  Delete the file instead of truncating" << std::endl;
     std::cout << "  -q  Quiet, do not output anything" << std::endl;
     std::cout << "" << std::endl;
     std::cout << "If a path or filename contains spaces enclose it in double-quotes." << std::endl;
