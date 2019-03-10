@@ -2,6 +2,8 @@
 #include <iostream>
 #include <cstring>
 #include <stdexcept>
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
  * stomp - Simple utility to truncate file(s)
@@ -10,7 +12,8 @@
  *
  * Generally ignores exceptions.
  *
- * 1.0 Initial implementation
+ * 1.0 Initial implementation, 14 Feb 2019
+ * 1.1.0 Added -d delete option, 9 Mar 2019
  */
 
 char *arg;
@@ -75,7 +78,7 @@ void stompArguments(int argc, char **argv)
             try
             {
                 if (isDelete) {
-                    unlink(arg);
+                    remove(arg);
                 }
                 else {
                     std::fstream fs(arg, std::fstream::out | std::fstream::trunc);
