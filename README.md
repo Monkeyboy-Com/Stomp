@@ -5,4 +5,4 @@ being monitored.
 
 Binary executables are available for Windows, Fedora/CentOS/RedHat, Debian/Ubuntu/Mint.
 
-See the [Stomp Wiki](https://github.com/Corionis/Stomp/wiki) for details and downloads.
+See the [Stomp Wiki](https://github.com/Monkeyboy-Com/Stomp/wiki) for details and downloads.
